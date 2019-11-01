@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  padding: 0px 32px;
+  margin: 0px;
+  font-family: arial;
+}
+
+.wrong-url {
+  display: none;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  background: red;
+  color: #fff;
+  font-size: 14px;
+}
+
+.preview {
+  margin: 5px auto;
+}
+
+.preview img, .preview video {
+  display : inline-block;
+  max-width: 300px;
+  max-height: 300px;
+  margin: 5px;
+}
+
+.name {
+  text-align: center;
+  padding: 16px;
+}
+
+.header {
+  width: 100%;
+  padding: 16px;
+  margin: 0;
+  height: 72px;
+  line-height: 20px;
+  text-align: center;
+  font-family: arial;
+  background: #fff;
+}
+.header a {
+  color: black;
+  text-decoration: none;
+}
+.input-cnt {
+  width: 100%;
+  padding: 16px;
+  margin: 10px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.input-cnt button {
+  width: 100px;
+  height: 40px;
+  background: green;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+}
+.input-cnt input {
+  width: 210px;
+  height: 40px;
+  border: 1px solid green;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.downloading {
+  position: fixed;
+  display: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px;
+  border-radius: 8px;
+  background: steelblue;
+  color: #fff;
+  width: 200px;
+  height: 60px;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  text-align: center;
+}
+
+.footer {
+  margin: 0px -32px;
+  width: calc(100% + 64px);
+  background: black;
+  padding: 16px;
+  color: #fff;
+  text-align: center;
+}
+
+.footer a {
+  color: #e91e63;
+  text-decoration: none;
+}
+
+div.insta-embeds iframe, div.insta-embeds blockquote {
+  display: inline-block!important;
+}

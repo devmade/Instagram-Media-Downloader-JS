@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="devSaurabh">
+  <title>Instagram Media downloader - Pure JS | devSaurabh</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <h1><a href="https://devsaurabh.com">Instagram Media Downloader</a></h1>
+  </div>
+  <div class="wrong-url"> Your URL is wrong </div>
+  <div class="input-cnt">
+    <input type="url" name="url" id="url" placeholder="https://www.instagram.com/p/blah" autocomplete="off"/>
+    <button onclick="download()">DOWNLOAD</button>
+  </div>
+  <div class="name">
+      Made by <a href="https://devsaurabh.com">Saurabh Sharma</a>
+  </div>
+  <hr>
+  <div>
+    Links you may try.
+    <ul>
+      <li>IGTV video : https://www.instagram.com/tv/B4SeHtQgAH0/</li>
+      <li>Single Image : https://www.instagram.com/p/BmOLMksAR6n/</li>
+      <li>Multiple Images : https://www.instagram.com/p/B4CUmxSnlGr/</li>
+      <li>Single Video : https://www.instagram.com/p/B3506FnB7CF/</li>
+      <li>Multiple Videos : https://www.instagram.com/p/B1JmkKTJFsQ/</li>
+      <li>Multiple Videos and Images together : https://www.instagram.com/p/B4EDJMEp752/</li>
+    </ul>
+  </div>
+  <hr>
+  <div class="preview" id="preview"></div>
+  <div class="downloading">Fetching media! <br> Please wait...</div>
+  <br>
+  <div class="footer">
+    Give me a follow? <a href="https://instagram.com/devsaurabh_">@devsaurabh</a><br><br>
+    Contact me? <a href="mailto:he@devsaurabh.com">he@devsaurabh.com</a>
+  </div>
+<script type="text/javascript" src="code.js"></script>
+<script type="text/javascript">
+  let ele = document.getElementById("preview");
+
+  document.getElementById("url").addEventListener("keydown", e => {
+    e = e || window.event;
+    if(e.keyCode == 13) download();
+  });
+  
+  function download(){
+    document.getElementById("preview").innerHTML = "";
+    let url = document.getElementById("url").value;
+
+    igdl_init(url, callback);
+
+    url.value = "";
+  }
+
+  function callback(items){
+    if(Array.isArray(items)){
+      items.forEach( item => {
+        showPreview(item.type, item.URL);
+      });
+    }
+    else if(typeof items === "object"){
+      showPreview(items.type, items.URL);
+    }
+  }
+
+  function showPreview(type, url){
+    console.log(type, url);
+    if(type == "Image"){
+      let img = document.createElement("img");
+      img.src = url;
+      
+      ele.appendChild(img);
+    }
+    else if(type == "Video") {
+      let vid = document.createElement("video");
+      let src = document.createElement("source");
+      src.src = url;
+      src.type = "video/mp4";
+      vid.controls = true;
+      vid.appendChild(src);
+      
+      ele.appendChild(vid);
+    }
+  }
+</script>
+</body>
+</html>
